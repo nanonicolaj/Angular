@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular.js bank account application</title>
+</head>
+<body>
+	<div ng-app="accountApp" ng-controller="accountController" id="container">
+		<header>
+			<h1>Angular.js bank account application</h1>
+		</header>
+		<section class="content">
+			<div class="col">
+				<form ng-submit='changeBalance(value)' id="moneyForm">
+					<input type="radio" ng-model='option' value='deposit'>Deposit <br>
+					<input type="radio" ng-model='option' value='withdraw'>Withdraw <br>
+					<input type="number" ng-model='value' id="moneyvalue"></input> 
+					<input type="submit" id="submit" value="Update"></input>
+				</form>
+			</div>
+			<div class="col">
+				Balance: <div ng-bind="getBalance()" class="balance"></div>
+			</div>
+			<div class="col">
+				Transactions: <br>
+				<div ng-repeat="t in transactions track by $index" class="transactions">
+					{{t}}
+				</div>
+			</div>
+		</section>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="accountModule.js"></script>
+	<script src="accountController.js"></script>
+</body>
+</html>
